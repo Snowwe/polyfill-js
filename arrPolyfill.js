@@ -106,9 +106,23 @@ Array.prototype.myReduce = function (fn) {
 
 //****************************** 13) Array.sort
 Array.prototype.mySort = function (compFunc) {
-    if (compFunc === 'undefined') {
+    console.log(compFunc);
+    // if (compFunc === 'undefined') {
 
+    const len = this.length;
+    for (let j = 0; j < len; j++) {
+        for (let i = 0; i < len - 1; ++i) {
+
+            if (this[i] > this[i + 1]) {
+                temp = this[i];
+                this[i] = this[i + 1];
+                this[i + 1] = temp;
+                flag = false;
+            }
+
+        }
     }
+    // }
     return this;
 };
 
@@ -193,4 +207,7 @@ console.log('every [12, 54, 130, 44] >10: ' + [12, 54, 130, 44].myEvery(elem => 
 
 let reduceRes = [2, 3, 4, 6].myReduce((a, b) => a + b);
 console.log('reduce [2, 3, 4, 6]: ' + reduceRes);
+
+let sortedArr = [9, 8, 66, 44, 1].mySort();
+console.log(sortedArr);
 
