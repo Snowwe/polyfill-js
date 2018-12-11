@@ -1,13 +1,29 @@
 //****************************** 14) Function.bind
+Function.prototype.myBind = function (fn) {
+    const thisFn = this;
+    return function () {
+        return thisFn.apply(fn);
+    }
+};
 //****************************** 15) Function.call
-//****************************** 16) Function.apply
-Function.prototype.myApply=function(){
+Function.prototype.myCall = function () {
 
 };
-/* мин/макс числа в массиве */
-let numbers = [5, 6, 2, 3, 7];
+//****************************** 16) Function.apply
+Function.prototype.myApply = function () {
 
-/* используем apply к Math.min/Math.max */
-let max = Math.max.apply(null, numbers); /* Это эквивалентно Math.max(numbers[0], ...)
-                                            или Math.max(5, 6, ...) */
-let min = Math.min.apply(null, numbers);
+};
+
+
+//****************************** tests
+
+const user = {
+    firstName: "Вася",
+    sayHi: function() {
+        console.log( this.firstName );
+    }
+};
+
+setTimeout(user.sayHi, 1000);
+setTimeout(user.sayHi.myBind(user), 1000);
+
