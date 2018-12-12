@@ -1,5 +1,4 @@
 //****************************** 1) Object.create
-
 Object.MyCreate = function (proto, params) {
 
     const o = {};
@@ -32,7 +31,7 @@ Object.myFreeze = function (obj) {
 
 //*************************tests
 // Массив
-let arr = ['a', 'b', 'c'];
+const arr = ['a', 'b', 'c'];
 console.log(Object.keys(arr));
 console.log(Object.myKeys(arr));
 
