@@ -1,28 +1,11 @@
 //****************************** 14) Function.bind
-Function.prototype.myBind = function(fn){
-    var thisFunction = this;
-    return function returnFunction() {
-        return thisFunction.apply(fn);
+Function.prototype.myBind = function (fn) {
+    const thisFunction = this;
+    return function (...arg) {
+        return thisFunction.apply(fn, arg);
     };
 };
 
-// Function.prototype.myBind = function (fn, context) {
-//     const thisFn = this;
-//     return function () {
-//         return thisFn.apply(context, fn);
-//     }
-// };
-// Function.prototype.myBind = function(fn, context) {
-//     // обрезаем ненужные аргументы (функцию и контекст)
-//     fn = this;
-//     const bindArgs = [].slice.call(arguments, 2);
-//     return function() {
-//         // здесь все аргументы будут необходимы
-//         const fnArgs = [].slice.call(arguments);
-//         // собираем все
-//         return fn.apply(context, bindArgs.concat(fnArgs));
-//     };
-// };
 //****************************** 15) Function.call
 Function.prototype.myCall = function (context, ...arg) {
     context.fnName = this;
@@ -99,4 +82,4 @@ let max = Math.max.myApply(null, numbers); /* Это эквивалентно Ma
                                             или Math.max(5, 6, ...) */
 let min = Math.min.myApply(null, numbers);
 
-console.log(max,min);
+console.log(max, min);
